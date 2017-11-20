@@ -1,9 +1,16 @@
+<import src="../../lib/wxParse/wxParse.wxml"/>
+
 <scroll-view class="navbar" scroll-x>
     <text wx:for="{{navs}}" class="item {{currentNav == index ? 'active' : ''}}"
           wx:key="unique" data-idx="{{index}}" bindtap="navbarTap">
         {{item.name}}
     </text>
 </scroll-view>
-<view class="main">
-    {{currentNav}}
+
+<view class="content">
+    <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
 </view>
+<!--<view class="main">-->
+    <!--{{currentNav}}-->
+    <!--<button open-type="contact">联系客服</button>-->
+<!--</view>-->
