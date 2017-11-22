@@ -1,7 +1,5 @@
 .main {
     background: #fff;
-    width: 100%;
-    height: 100%;
     white-space: nowrap;
     padding-bottom: 20rpx;
     padding-left: 20rpx;
@@ -10,15 +8,17 @@
 
 
 .navbar {
-    width: 100%;
     white-space: nowrap;
     padding-bottom: 20rpx;
+    font-weight: 400;
+    font-size: large;
+    font-family: "Microsoft YaHei";
 }
 
 .content {
     height: 100%;
     background: #fff;
-    width: 100%;
+    width: 92%;
     padding-bottom: 20rpx;
     padding-left: 20rpx;
     padding-right: 20rpx;
@@ -51,4 +51,8 @@
 
 .contact {
     padding-top: 20rpx;
+}
+
+.wxParse-th{
+    font-weight: bold;
 }

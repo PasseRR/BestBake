@@ -1,5 +1,6 @@
 <import src="../../lib/wxParse/wxParse.wxml"/>
 
+
 <view class="main">
     <scroll-view class="navbar" scroll-x="true">
         <text wx:for="{{navs}}" class="item {{currentNav == index ? 'active' : ''}}"
@@ -7,7 +8,9 @@
             {{item.name}}
         </text>
     </scroll-view>
-
+    <loading hidden="{{hidden}}">
+        加载中...
+    </loading>
     <view class="content">
         <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
         <view class="contact">

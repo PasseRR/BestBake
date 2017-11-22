@@ -7,11 +7,14 @@ Page({
     data: {
         navs: [],
         currentNav: 0,
-        content: ''
+        content: '',
+        hidden: true,
+        isStarted: false
     },
     onLoad: function () {
-        let navs = [];
         this.getProducts().then(resp => {
+            this.toggleLoading();
+            let navs = [];
             if (resp) {
                 resp.forEach(item => {
                     navs.push(item);
@@ -21,21 +24,37 @@ Page({
             this.setData({
                 navs: navs
             });
-
+        }).then(() => {
             this.loadPage(this.data.currentNav);
+            this.toggleLoading();
+            this.setData({
+                isStarted: true
+            });
+        });
+    },
+    onReady: function () {
+        wx.showShareMenu({
+            withShareTicket: true
         });
     },
     navbarTap: function (e) {
         this.loadPage(e.currentTarget.dataset.idx)
     },
     loadPage(index) {
-        this.setData({
-            currentNav: index
-        });
+        if(this.data.isStarted && index === this.data.currentNav){
+            return;
+        }
+
         let cardId = this.data.navs[index].id;
         this.getCard(cardId).then(resp => {
+            this.toggleLoading();
             let that = this;
-            wxParse.wxParse('content', 'md', resp.desc, that, 5);
+            wxParse.wxParse('content', 'md', resp.desc, that);
+        }).then(() => {
+            this.setData({
+                currentNav: index
+            });
+            this.toggleLoading();
         });
     },
     getProducts() {
@@ -61,7 +80,15 @@ Page({
         });
     },
     onPullDownRefresh: function () {
+        this.setData({
+            isStarted: false
+        });
         this.onLoad();
         wx.stopPullDownRefresh();
     },
+    toggleLoading(){
+        this.setData({
+            hidden: !this.data.hidden
+        });
+    }
 });
