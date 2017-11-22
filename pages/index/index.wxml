@@ -1,16 +1,19 @@
 <import src="../../lib/wxParse/wxParse.wxml"/>
 
-<scroll-view class="navbar" scroll-x>
-    <text wx:for="{{navs}}" class="item {{currentNav == index ? 'active' : ''}}"
-          wx:key="unique" data-idx="{{index}}" bindtap="navbarTap">
-        {{item.name}}
-    </text>
-</scroll-view>
+<view class="main">
+    <scroll-view class="navbar" scroll-x="true">
+        <text wx:for="{{navs}}" class="item {{currentNav == index ? 'active' : ''}}"
+              wx:key="unique" data-idx="{{index}}" bindtap="navbarTap">
+            {{item.name}}
+        </text>
+    </scroll-view>
 
-<view class="content">
-    <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
+    <view class="content">
+        <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
+        <view class="contact">
+            <button type="primary" open-type="contact" size="mini">
+                联系客服
+            </button>
+        </view>
+    </view>
 </view>
-<!--<view class="main">-->
-    <!--{{currentNav}}-->
-    <!--<button open-type="contact">联系客服</button>-->
-<!--</view>-->
