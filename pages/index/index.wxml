@@ -14,9 +14,7 @@
     <view class="content">
         <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
         <view class="contact">
-            <button type="primary" open-type="contact" size="mini">
-                联系客服
-            </button>
+            <button type="primary" open-type="contact" size="mini">联系客服</button>
         </view>
     </view>
 </view>
