@@ -9,7 +9,8 @@ Page({
         currentNav: 0,
         content: '',
         hidden: true,
-        isStarted: false
+        isStarted: false,
+        bgImageUrl: ''
     },
     onLoad: function () {
         this.getProducts().then(resp => {
@@ -29,6 +30,14 @@ Page({
             this.toggleLoading();
             this.setData({
                 isStarted: true
+            });
+            // 设置背景图
+            this.getCard(config.bgImageCardId).then(resp => {
+                if(resp.desc){
+                    this.setData({
+                        bgImageUrl: resp.desc
+                    });
+                }
             });
         });
     },

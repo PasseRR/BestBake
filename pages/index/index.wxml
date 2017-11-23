@@ -11,7 +11,7 @@
     <loading hidden="{{hidden}}">
         加载中...
     </loading>
-    <view class="content">
+    <view class="content" style="background-image: url({{bgImageUrl}});">
         <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
         <view class="contact">
             <button type="primary" open-type="contact" size="mini">联系客服</button>
