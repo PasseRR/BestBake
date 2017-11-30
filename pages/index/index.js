@@ -9,7 +9,6 @@ Page({
         currentNav: 0,
         content: '',
         hidden: true,
-        isStarted: false,
         bgImageUrl: ''
     },
     onLoad: function () {
@@ -50,15 +49,11 @@ Page({
         this.loadPage(e.currentTarget.dataset.idx)
     },
     loadPage(index) {
-        if(this.data.isStarted && index === this.data.currentNav){
-            return;
-        }
-
         let cardId = this.data.navs[index].id;
         this.getCard(cardId).then(resp => {
             this.toggleLoading();
             let that = this;
-            wxParse.wxParse('content', 'md', resp.desc, that);
+            wxParse.wxParse('content', 'md', resp.desc, that, 20);
         }).then(() => {
             this.setData({
                 currentNav: index
@@ -89,9 +84,6 @@ Page({
         });
     },
     onPullDownRefresh: function () {
-        this.setData({
-            isStarted: false
-        });
         this.onLoad();
         wx.stopPullDownRefresh();
     },
