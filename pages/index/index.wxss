@@ -1,8 +1,6 @@
 .main {
     background: #fff;
-    white-space: nowrap;
     width: 100%;
-    white-space:pre-line;
     padding-bottom: 20rpx;
 }
 
@@ -12,7 +10,6 @@
     padding-bottom: 20rpx;
     font-weight: 400;
     font-size: large;
-    font-family: "Microsoft YaHei";
 }
 
 .content {
@@ -21,7 +18,7 @@
     width: 92%;
     padding-bottom: 20rpx;
     padding-left: 20rpx;
-    padding-right: 20rpx;
+    padding-right: 40rpx;
     background:rgba(255, 255, 255, 0.3);
 }
 
